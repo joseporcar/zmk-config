@@ -1,0 +1,10 @@
+#include <kyria_rev3.keymap>
+
+/ {
+    keymap {
+        extra1 { status = "reserved"; };
+        extra2 { status = "reserved"; };
+        extra3 { status = "reserved"; };
+        extra4 { status = "reserved"; };
+    };
+};
