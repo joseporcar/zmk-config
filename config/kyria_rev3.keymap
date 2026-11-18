@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 /* Uncomment this block if using RGB
 &led_strip {
@@ -17,42 +18,58 @@
  */
 
 / {
+    behaviors {
+        msc_enc: msc_enc {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            label = "MSC_ENC";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
+
         colemak_dh {
             display-name = "Colemak-DH";
-
             bindings = <
-            &kp TAB       &kp Q &kp W &kp F &kp P &kp B                                                  &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp SQT
-            &kp BSPC      &kp A &kp R &kp S &kp T &kp G                                                  &kp M &kp N  &kp E     &kp I   &kp O    &kp RET
-            &kp UNDRSCORE &kp Z &kp X &kp C &kp D &kp V &kp ESC &kp RSHIFT               &mo 1   &kp DEL  &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp GRAVE
-                                  &kp LALT &kp RSHIFT &kp SPACE &kp LSHIFT &kp PIPE     &kp PSCRN &kp LGUI &kp LCTRL &kp RSHIFT &kp RALT
+&kp TAB         &kp Q  &kp W  &kp F     &kp P  &kp B                                                 &kp J      &kp L  &kp U      &kp Y    &kp SEMI  &kp SQT
+&kp BSPC        &kp A  &kp R  &kp S     &kp T  &kp G                                                 &kp M      &kp N  &kp E      &kp I    &kp O     &kp RET
+&kp UNDERSCORE  &kp Z  &kp X  &kp C     &kp D  &kp V      &kp ESC     &mkp MB1  &mkp MB2   &kp DEL   &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH  &kp GRAVE
+                              &kp LALT  &mo 1  &kp SPACE  &kp LSHIFT  &kp PIPE  &kp PSCRN  &kp LGUI  &kp LCTRL  &mo 2  &kp RALT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&msc_enc SCRL_UP SCRL_DOWN>,
+                <&inc_dec_kp RIGHT LEFT>;
         };
-        function_layer {
-            display-name = "Function Layer";
+
+        Navigation {
+            display-name = "Navigation layer";
+
             // ---------------------------------------------------------------------------------------------------------------------------------
             // |       |      |BT_CLR|BTSEL0|BTSEL1|BTSEL2|                                         |      |      |      |      |      |      |
             // |       |      |      |BTSEL3|BTSEL4|      |                                         |      |      |      |      |      |      |
             // |       |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
             //                       |      |      |      |      |      |      |      |      |      |      |      |      |
+
             bindings = <
-            &studio_unlock &trans &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2              &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans     &bt BT_SEL 3 &bt BT_SEL 4 &trans                    &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans &trans &trans &trans
-                                 &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans
+&studio_unlock  &trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &trans  &trans      &bt BT_SEL 3  &bt BT_SEL 4  &trans                                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &trans  &trans      &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                    &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
-        extra1 { status = "reserved"; };
-        extra2 { status = "reserved"; };
-        extra3 { status = "reserved"; };
-        extra4 { status = "reserved"; };
 
+        nums_and_symbols {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
     };
 };
-
-
