@@ -1,4 +1,4 @@
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 80
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 25
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -7,18 +7,24 @@
 
 &left_encoder {
     status = "okay";
-    steps = <120>;
+    steps = <60>;
 };
 
 &right_encoder {
     status = "okay";
-    steps = <120>;
+    steps = <60>;
+};
+
+&msc {
+    time-to-max-speed-ms = <0>;
+    acceleration-exponent = <0>;
 };
 
 / {
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder &right_encoder>;
+        triggers-per-rotation = <30>;
     };
 
     behaviors {
@@ -26,14 +32,14 @@
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-            tap-ms = <15>;
+            tap-ms = <20>;
         };
 
         msc_h: msc_horizontal {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
-            tap-ms = <15>;
+            tap-ms = <20>;
         };
     };
 
