@@ -1,4 +1,4 @@
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 80
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -7,27 +7,33 @@
 
 &left_encoder {
     status = "okay";
-    steps = <80>;
+    steps = <120>;
 };
 
 &right_encoder {
     status = "okay";
-    steps = <80>;
+    steps = <120>;
 };
 
 / {
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder &right_encoder>;
-        triggers-per-rotation = <20>;
     };
 
     behaviors {
-        msc_enc: msc_enc {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
-            bindings = <&msc>, <&msc>;
-            tap-ms = <20>;
+        msc_v: msc_vertical {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+            tap-ms = <15>;
+        };
+
+        msc_h: msc_horizontal {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+            tap-ms = <15>;
         };
     };
 
@@ -43,9 +49,7 @@
                               &kp LALT  &mo 1  &kp SPACE  &kp LCTRL  &kp PIPE  &kp PSCRN  &kp LSHIFT  &kp LGUI  &mo 2  &kp RALT
             >;
 
-            sensor-bindings =
-                <&msc_enc SCRL_UP SCRL_DOWN>,
-                <&msc_enc SCRL_LEFT SCRL_RIGHT>;
+            sensor-bindings = <&msc_v>, <&msc_h>;
         };
 
         Navigation {
@@ -57,9 +61,7 @@
                          &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans      &tog 1        &trans
             >;
 
-            sensor-bindings =
-                <&msc_enc SCRL_UP SCRL_DOWN>,
-                <&msc_enc SCRL_LEFT SCRL_RIGHT>;
+            sensor-bindings = <&msc_v>, <&msc_h>;
         };
 
         nums_and_symbols {
@@ -73,7 +75,7 @@
 
             sensor-bindings =
                 <&inc_dec_kp K_VOLUME_UP K_VOLUME_DOWN>,
-                <&msc_enc SCRL_LEFT SCRL_RIGHT>;
+                <&msc_h>;
         };
     };
 };
