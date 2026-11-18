@@ -23,10 +23,12 @@
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
+
             tap-ms = <10>;
             wait-ms = <5>;
         };
     };
+
     macros {
         two_keys: two_keys {
             compatible = "zmk,behavior-macro";
@@ -43,10 +45,10 @@
         colemak_dh {
             display-name = "Colemak-DH";
             bindings = <
-&kp TAB         &kp Q  &kp W  &kp F     &kp P  &kp B                                                 &kp J      &kp L  &kp U      &kp Y    &kp SEMI  &kp SQT
-&kp BSPC        &kp A  &kp R  &kp S     &kp T  &kp G                                                 &kp M      &kp N  &kp E      &kp I    &kp O     &kp RET
-&kp UNDERSCORE  &kp Z  &kp X  &kp C     &kp D  &kp V      &kp ESC   &mkp MB1  &mkp MB2   &kp DEL     &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH  &kp GRAVE
-                              &kp LALT  &mo 1  &kp SPACE  &kp LGUI  &kp PIPE  &kp PSCRN  &kp LSHIFT  &kp LCTRL  &mo 2  &kp RALT
+&kp TAB         &kp Q  &kp W  &kp F     &kp P  &kp B                                                  &kp J     &kp L  &kp U      &kp Y    &kp SEMI  &kp SQT
+&kp BSPC        &kp A  &kp R  &kp S     &kp T  &kp G                                                  &kp M     &kp N  &kp E      &kp I    &kp O     &kp RET
+&kp UNDERSCORE  &kp Z  &kp X  &kp C     &kp D  &kp V      &kp ESC    &mkp MB1  &mkp MB2   &kp DEL     &kp K     &kp H  &kp COMMA  &kp DOT  &kp FSLH  &kp GRAVE
+                              &kp LALT  &mo 1  &kp SPACE  &kp LCTRL  &kp PIPE  &kp PSCRN  &kp LSHIFT  &kp LGUI  &mo 2  &kp RALT
             >;
 
             sensor-bindings =
@@ -56,22 +58,16 @@
 
         Navigation {
             display-name = "Navigation layer";
-
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // |       |      |BT_CLR|BTSEL0|BTSEL1|BTSEL2|                                         |      |      |      |      |      |      |
-            // |       |      |      |BTSEL3|BTSEL4|      |                                         |      |      |      |      |      |      |
-            // |       |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-            //                       |      |      |      |      |      |      |      |      |      |      |      |      |
-
             bindings = <
 &trans  &kp F1  &kp F2   &kp F3   &kp F4   &trans                                  &trans      &trans        &trans        &trans        &kp PG_UP     &trans
 &trans  &kp F5  &kp F6   &kp F7   &kp F8   &trans                                  &kp LEFT    &kp DOWN      &kp UP        &kp RIGHT     &kp PG_DN     &trans
-&trans  &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans  &bt BT_CLR  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+&trans  &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans  &bt BT_CLR  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &two_keys
                          &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans      &tog 1        &trans
             >;
         };
 
         nums_and_symbols {
+            display-name = "numbers and symbols";
             bindings = <
 &kp EQUAL      &kp LS(PLUS)  &kp N7  &kp N8  &kp N9  &kp LS(STAR)                                  &kp LS(AT)    &kp LS(LBRC)  &kp LS(RBRC)  &kp HASH    &kp CARET  &trans
 &trans         &kp MINUS     &kp N4  &kp N5  &kp N6  &kp FSLH                                      &kp LS(AMPS)  &kp LS(LPAR)  &kp LS(RPAR)  &kp LBKT    &kp RBKT   &trans
