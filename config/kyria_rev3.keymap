@@ -8,16 +8,20 @@
 &left_encoder {
     status = "okay";
     steps = <24>;
-    triggers-per-rotation = <24>;
 };
 
 &right_encoder {
     status = "okay";
     steps = <24>;
-    triggers-per-rotation = <24>;
 };
 
 / {
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder &right_encoder>;
+        triggers-per-rotation = <24>;
+    };
+
     behaviors {
         msc_enc: msc_enc {
             compatible = "zmk,behavior-sensor-rotate-var";
@@ -34,8 +38,6 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_tap>, <&kp RSHIFT &kp LSHIFT>;
-
-            label = "TWO_KEYS";
         };
     };
 
@@ -64,6 +66,10 @@
 &trans  &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans  &bt BT_CLR  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &two_keys
                          &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans      &tog 1        &trans
             >;
+
+            sensor-bindings =
+                <&msc_enc SCRL_UP SCRL_DOWN>,
+                <&msc_enc SCRL_LEFT SCRL_RIGHT>;
         };
 
         nums_and_symbols {
@@ -74,6 +80,10 @@
 &kp LS(PRCNT)  &kp N0        &kp N1  &kp N2  &kp N3  &kp DOT       &trans  &trans  &trans  &trans  &kp LS(DLLR)  &kp LS(EXCL)  &kp LS(LT)    &kp LS(GT)  &kp BSLH   &trans
                                      &trans  &tog 2  &trans        &trans  &trans  &trans  &trans  &trans        &trans        &trans
             >;
+
+            sensor-bindings =
+                <&inc_dec_kp K_VOLUME_UP K_VOLUME_DOWN>,
+                <&msc_enc SCRL_LEFT SCRL_RIGHT>;
         };
     };
 };
