@@ -9,13 +9,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* Uncomment this block if using RGB
-&led_strip {
-    chain-length = <6>;
-    // chain-length = <31>; // Uncomment if using both per-key and underglow LEDs
-    // chain-length = <25>; // Uncomment if using only per-key LEDs.
-};
- */
 
 / {
     behaviors {
@@ -54,7 +47,7 @@
             //                       |      |      |      |      |      |      |      |      |      |      |      |      |
 
             bindings = <
-&studio_unlock  &trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2                                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans          &trans  &trans      &bt BT_SEL 3  &bt BT_SEL 4  &trans                                        &trans  &trans  &trans  &trans  &trans  &trans
 &trans          &trans  &trans      &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                     &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans
