@@ -1,4 +1,4 @@
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 25
+// #define ZMK_POINTING_DEFAULT_SCRL_VAL 25
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -20,9 +20,10 @@
     acceleration-exponent = <0>;
 };
 
+&tog { locking; };
 */
 
-&tog { toggle-mode = "flip"; locking;};
+&tog { toggle-mode = "flip"; };
 
 / {
     sensors: sensors {
@@ -61,7 +62,7 @@
                               &kp LALT  &kp LGUI  &kp SPACE  &kp LCTRL  &kp PIPE  &kp PSCRN  &kp LSHIFT  &mo 1  &mo 2  &kp RALT
             >;
 
-            sensor-bindings = <&msc_v>, <&msc_h>;
+            sensor-bindings = <&inc_dec_kp A B>, <&inc_dec_kp A B>;
         };
 
         Navigation {
