@@ -1,4 +1,4 @@
-// #define ZMK_POINTING_DEFAULT_SCRL_VAL 25
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 25
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -20,8 +20,9 @@
     acceleration-exponent = <0>;
 };
 
-&tog { locking; };
 */
+
+&tog { toggle-mode = "flip"; locking;};
 
 / {
     sensors: sensors {
@@ -56,8 +57,8 @@
             bindings = <
 &kp TAB         &kp Q  &kp W  &kp F     &kp P     &kp B                                                  &kp J  &kp L  &kp U      &kp Y    &kp SEMI  &kp SQT
 &kp BSPC        &kp A  &kp R  &kp S     &kp T     &kp G                                                  &kp M  &kp N  &kp E      &kp I    &kp O     &kp RET
-&kp UNDERSCORE  &kp Z  &kp X  &kp C     &kp D     &kp V      &kp ESC    &mkp MB1  &mkp MB2   &kp DEL     &kp K  &kp H  &kp COMMA  &kp DOT  &kp FSLH  &kp GRAVE
-                              &kp LALT  &kp LGUI  &kp SPACE  &kp LCTRL  &kp PIPE  &kp PSCRN  &kp LSHIFT  &mo 1  &mo 2  &kp A
+&kp UNDERSCORE  &kp Z  &kp X  &kp C     &kp D     &kp V      &kp ESC    &mkp MB4  &mkp MB5   &kp DEL     &kp K  &kp H  &kp COMMA  &kp DOT  &kp FSLH  &kp GRAVE
+                              &kp LALT  &kp LGUI  &kp SPACE  &kp LCTRL  &kp PIPE  &kp PSCRN  &kp LSHIFT  &mo 1  &mo 2  &kp RALT
             >;
 
             sensor-bindings = <&msc_v>, <&msc_h>;
@@ -66,10 +67,10 @@
         Navigation {
             display-name = "Navigation layer";
             bindings = <
-&trans  &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_CLR                                          &trans          &kp HOME        &kp END       &trans           &kp PG_UP     &trans
-&trans  &kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 0                                        &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &kp PG_DN     &trans
-&trans  &kp F9  &kp F10  &kp F11  &kp F12  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans  &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &bt BT_SEL 4  &kp RS(LSHIFT)
-                         &trans   &trans   &trans        &trans        &trans  &trans  &trans  &trans          &tog 1          &kp LCTRL
+&trans  &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_CLR                                                &trans          &kp HOME        &kp END       &trans           &kp PG_UP  &trans
+&trans  &kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 0                                              &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &kp PG_DN  &trans
+&trans  &kp F9  &kp F10  &kp F11  &kp F12  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans     &mkp LCLK  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &mkp RCLK  &kp RS(LSHIFT)
+                         &trans   &trans   &trans        &trans        &trans  &mkp MCLK  &trans     &trans          &tog 1          &kp LCTRL
             >;
 
             sensor-bindings = <&msc_v>, <&msc_h>;
@@ -81,7 +82,7 @@
 &kp EQUAL      &kp LS(PLUS)  &kp N7  &kp N8  &kp N9  &kp LS(STAR)                                  &kp LS(AT)    &kp LS(LBRC)  &kp LS(RBRC)  &kp HASH    &kp CARET  &trans
 &trans         &kp MINUS     &kp N4  &kp N5  &kp N6  &kp FSLH                                      &kp LS(AMPS)  &kp LS(LPAR)  &kp LS(RPAR)  &kp LBKT    &kp RBKT   &trans
 &kp LS(PRCNT)  &kp N0        &kp N1  &kp N2  &kp N3  &kp DOT       &trans  &trans  &trans  &trans  &kp LS(DLLR)  &kp LS(EXCL)  &kp LS(LT)    &kp LS(GT)  &kp BSLH   &trans
-                                     &trans  &tog 2  &trans        &trans  &trans  &trans  &trans  &trans        &trans        &trans
+                                     &trans  &trans  &trans        &trans  &trans  &trans  &trans  &tog 2        &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp K_VOLUME_UP K_VOLUME_DOWN>, <&msc_h>;
