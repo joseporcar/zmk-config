@@ -59,7 +59,7 @@
                               &kp LALT  &kp LGUI  &kp SPACE  &kp LCTRL  &kp PIPE  &kp PSCRN  &kp LSHIFT  &mo 1  &mo 2  &kp A
             >;
 
-            sensor-bindings = <&msc MOVE_X(20)> MOVE_X(-20)>, <&msc MOVE_Y(20)> <&msc MOVE_Y(-20)>;
+            sensor-bindings = <&msc MOVE_X(20) MOVE_X(-20)>, <&msc MOVE_Y(20) MOVE_Y(-20)>;
         };
 
         Navigation {
@@ -71,7 +71,7 @@
                          &trans   &trans   &trans        &trans        &trans  &trans  &trans  &trans          &tog 1          &kp LCTRL
             >;
 
-            sensor-bindings = <&msc MOVE_X(5)> MOVE_X(-5)>, <&msc MOVE_Y(5)> <&msc MOVE_Y(-5)>;
+            sensor-bindings = <&msc MOVE_X(5) MOVE_X(-5)>, <&msc MOVE_Y(5) MOVE_Y(-5)>;
         };
 
         nums_and_symbols {
