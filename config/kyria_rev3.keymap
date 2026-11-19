@@ -19,9 +19,9 @@
     time-to-max-speed-ms = <0>;
     acceleration-exponent = <0>;
 };
-*/
-&tog { locking; };
 
+&tog { locking; };
+*/
 / {
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
