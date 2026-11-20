@@ -6,13 +6,11 @@
 #include <dt-bindings/zmk/pointing.h>
 
 &left_encoder {
-    status = "okay";
-    steps = <100>;
+    steps = <60>;
 };
 
 &right_encoder {
-    status = "okay";
-    steps = <100>;
+    steps = <60>;
 };
 /*
 &msc {
