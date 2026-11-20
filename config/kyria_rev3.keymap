@@ -7,12 +7,12 @@
 
 &left_encoder {
     status = "okay";
-    steps = <60>;
+    steps = <100>;
 };
 
 &right_encoder {
     status = "okay";
-    steps = <60>;
+    steps = <100>;
 };
 /*
 &msc {
@@ -60,7 +60,7 @@
                               &kp LALT  &kp LGUI  &kp SPACE  &kp LCTRL  &kp PIPE  &kp PSCRN  &kp LSHIFT  &mo 1  &mo 2  &kp RALT
             >;
 
-            sensor-bindings = <&inc_dec_kp A B &inc_dec_kp A B>;
+            sensor-bindings = <&inc_dec_kp A B &inc_dec_kp PG_DN PG_UP>;
         };
 
         Navigation {
