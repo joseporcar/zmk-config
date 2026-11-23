@@ -1,4 +1,5 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -18,6 +19,12 @@
     acceleration-exponent = <0>;
 };
 */
+
+&mmv {
+    time-to-max-speed-ms = <0>;
+    acceleration-exponent = <0>;
+};
+
 &tog { locking; };
 
 
