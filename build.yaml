@@ -18,8 +18,10 @@
 #     artifact-name: corne_left_with_studio
 #
 include:
+include:
   - board: xiao_ble//zmk
     shield: kyria_rev3_dongle
+    cmake-args: -DCONFIG_ZMK_DISPLAY=n
 
   - board: nice_nano//zmk
     shield: kyria_rev3_left
